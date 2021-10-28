@@ -19,6 +19,7 @@ def get_all_cars(request):
 @api_view(['POST', 'GET'])
 @permission_classes([IsAuthenticated])
 def user_cars(request):
+    user = request.user
     if request.method == 'POST':
         serializer = CarSerializer(data=request.data)
         if serializer.is_valid():
